@@ -2,6 +2,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const requireDir = require('require-dir')
+const config = require('./config.json')
 
 // Iniciando o App
 const app = express()
@@ -10,7 +11,7 @@ app.use(cors())
 
 // Iniciando o DB
 mongoose.connect(
-    'mongodb://localhost:27017/nodeapi',
+    `mongodb://${config.dbuser}:${config.dbpassword}@ds127802.mlab.com:27802/node-api-products`,
     { useNewUrlParser: true }
 )
 requireDir('./src/models')
